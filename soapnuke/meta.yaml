@@ -1,0 +1,27 @@
+{% set version = "2.0.6" %}
+{% set sha256 = "1f1b3d0ea7ad39cdcd81b642865df461a99831baaf4bd78bdb43ba2f881ffa78" %}
+package:
+  name: soapnuke
+  version: {{ version }}
+
+source:
+  url: https://github.com/BGI-flexlab/SOAPnuke/archive/SOAPnuke{{ version }}.tar.gz
+  sha256: {{ sha256  }}
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+    - zlib
+  host:
+    - zlib
+  run:
+    - zlib
+
+about:
+  home: MapReduce Acceleration supported Software for integrated Quality Control and Preprocessing of High-Throughput Sequencing Data 
+  license: GPLv3
+  summary: SOAPnuke is a novel analysis tool developed for ultrafast quality control and preprocessing of high throughput sequencing (HTS) data.
