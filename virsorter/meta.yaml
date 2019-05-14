@@ -1,0 +1,44 @@
+{% set name = "VirSorter" %} 
+{% set version = "1.0.5" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/simroux/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 5a25f74cac02502a6a1961c31945ae1d6bae27e718f0a471a674bf549c376330
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+
+  host:
+    - perl
+
+  run:
+    - mcl=14.137
+    - muscle
+    - blast
+    - perl-bioperl
+    - perl-file-which
+    - hmmer=3.1b2
+    - perl-parallel-forkmanager
+    - perl-list-moreutils
+    - diamond=0.9.14
+    - metagene_annotator
+
+test:
+  commands:
+    - perl wrapper_phage_contigs_sorter_iPlant.pl --help
+
+about:
+  home: https://github.com/simroux/VirSorter
+  license: GNU General Public License v2.0 (GPLv2)
+  license_family: GPL2
+  summary: 'Source code of the VirSorter tool, also available as an App on CyVerse/iVirus'
