@@ -1,24 +1,24 @@
 #!/bin/bash
 
-sed -i 's%catdir($Bin, \'Scripts\')%catfile($Bin)%g' wrapper_phage_contigs_sorter_iPlant.pl
+sed -i "s/catdir(\$Bin, 'Scripts')/catfile(\$Bin)/g" wrapper_phage_contigs_sorter_iPlant.pl
 
 # install
 cd Scripts
 make clean
-make INCLUDE_DIRS="$PREFIX/include" LIBRARY_DIRS="$PREFIX/lib"
+make INCLUDE_DIRS="${CONDA_PREFIX}/include" LIBRARY_DIRS="${CONDA_PREFIX}/lib"
 
-chmod +x *.pl Sliding_windows_3 ../Scripts/wrapper_phage_contigs_sorter_iPlant.pl
+chmod +x *.pl Sliding_windows_3 ../wrapper_phage_contigs_sorter_iPlant.pl
 
-cp *.pl ${PERFIX}/bin/
-cp Sliding_windows_3 ${PREFIX}/bin/
+cp *.pl ${CONDA_PERFIX}/bin/
+cp Sliding_windows_3 ${CONDA_PREFIX}/bin/
 
-cp ../Scripts/wrapper_phage_contigs_sorter_iPlant.pl ${PREFIX}/bin/
+cp ../wrapper_phage_contigs_sorter_iPlant.pl ${CONDA_PREFIX}/bin/
 
 chmod +x ${RECIPE_DIR}/download-virsorter-db.sh
-cp ${RECIPE_DIR}/download-virsorter-db.sh ${PREFIX}/bin/
+cp ${RECIPE_DIR}/download-virsorter-db.sh ${CONDA_PREFIX}/bin/
 
 # create folder for database download
-target=${PREFIX}/share/${PKG_NAME}-${PKG_VERSION}
+target=${CONDA_PREFIX}/share/${PKG_NAME}-${PKG_VERSION}
 mkdir -p ${target}/db/
 touch ${target}/db/.empty
 
