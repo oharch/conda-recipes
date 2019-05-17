@@ -7,14 +7,14 @@ cd Scripts
 make clean
 make INCLUDE_DIRS="${CONDA_PREFIX}/include" LIBRARY_DIRS="${CONDA_PREFIX}/lib"
 
-chmod +x *.pl Sliding_windows_3 ../wrapper_phage_contigs_sorter_iPlant.pl
+# chmod +x *.pl Sliding_windows_3 ../wrapper_phage_contigs_sorter_iPlant.pl
 
 cp *.pl ${CONDA_PERFIX}/bin/
 cp Sliding_windows_3 ${CONDA_PREFIX}/bin/
 
 cp ../wrapper_phage_contigs_sorter_iPlant.pl ${CONDA_PREFIX}/bin/
 
-chmod +x ${RECIPE_DIR}/download-virsorter-db.sh
+# chmod +x ${RECIPE_DIR}/download-virsorter-db.sh
 cp ${RECIPE_DIR}/download-virsorter-db.sh ${CONDA_PREFIX}/bin/
 
 # create folder for database download

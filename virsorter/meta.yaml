@@ -23,15 +23,15 @@ requirements:
     - perl
 
   run:
-    - mcl=14.137
+    - mcl ==14.137
     - muscle
     - blast
     - perl-bioperl
     - perl-file-which
-    - hmmer=3.1b2
+    - hmmer ==3.1b2
     - perl-parallel-forkmanager
     - perl-list-moreutils
-    - diamond=0.9.14
+    - diamond ==0.9.14
     - metagene_annotator
 
 test:
