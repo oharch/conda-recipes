@@ -1,0 +1,40 @@
+{% set name = "vcontact2" %}
+{% set version = '0.9.9' %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://bitbucket.org/MAVERICLab/{{ name }}/get/master.tar.gz
+  sha256: 4c56dd848aa0482dbe0fffb2fb0e62d673d8349045feb4b5c3fe49ee0dcf6165
+
+build:
+  number: 0
+
+requirements:
+  host:
+    - python
+    - setuptools
+
+  run:
+    - mcl
+    - blast
+    - diamond
+    - networkx >=1.11
+    - numpy >=1.12.1
+    - scipy >=0.19.0
+    - pandas >=0.21.0
+    - scikit-learn >=0.18.1
+    - biopython >=1.68
+    - hdf5 >=1.8.17
+    - pytables
+
+  test:
+    commands:
+      - vcontact --help
+
+about:
+  home: https://bitbucket.org/MAVERICLab/vcontact2
+  license: GPLv3
+  summary: vConTACT2 is a tool to perform guilt-by-contig-association automatic classification of viral contigs.
