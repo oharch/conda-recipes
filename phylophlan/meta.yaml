@@ -1,0 +1,41 @@
+{% set name = "phylophlan" %}
+{% set version = '1.0' %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  hg_url: https://bitbucket.org/nsegata/{{ name }}
+  hg_tag: dev
+
+build:
+  number: 0
+
+requirements:
+  host:
+    - python >=3.0
+
+  run:
+    - biopython >=1.70
+    - numpy >=1.12.1
+    - dendropy >=4.2.0
+    - raxml
+    - fasttree
+    - iqtree
+    - muscle
+    - mafft
+    - trimal
+    - diamond
+
+  test:
+    commands:
+      - phylophlan2.py --version
+
+about:
+  home: http://huttenhower.sph.harvard.edu/phylophlan
+  license: Custom OSS
+  license_family: Other
+  license_file: license.txt
+  summary: PhyloPhlAn is a computational pipeline for reconstructing highly accurate and resolved phylogenetic trees based on whole-genome sequence information.
+  
