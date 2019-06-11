@@ -1,0 +1,23 @@
+{% set version = "0.1.0" %}
+{% set name = "SigClust" %}
+
+package:
+  name: {{ name | lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/tchappell/{{ name }}.git
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+
+about:
+  home: https://github.com/tchappell/SigClust
+  license: GPLv3
+  summary: k-means clustering for biological sequences using topological signatures.
