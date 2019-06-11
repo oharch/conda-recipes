@@ -1,0 +1,39 @@
+{% set version = "1.2.4" %}
+
+package:
+  name: megahit
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/voutcn/megahit.git
+
+build:
+  number: 0
+
+requirements:
+  build:
+    # megahit requires openpm, which is not available in clang < 3.7
+    - {{ compiler('c') }}
+    - cmake
+    - make
+  host:
+    - zlib
+  run:
+    - zlib
+    - python
+
+test:
+  commands:
+      # Run one of the examples provided with megahit to make sure the
+      # binaries actually work.
+      # The output has to be removed to prevent permission failure during
+      # cleanup after mulled-build.
+    - megahit --help
+
+about:
+  home: https://github.com/voutcn/megahit
+  license: GPL-3.0
+  summary: |-
+    MEGAHIT: An ultra-fast single-node solution for large and complex
+    metagenomics assembly via succinct de Bruijn graph
+  license_family: GPL
