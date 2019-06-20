@@ -1,0 +1,45 @@
+{% set version = "0.0.8" %}
+{% set name = "packfor" %}
+{% set sha256 = "43250d4efc18d23fdccc52d932f131a80a4409178c8149a96bab81efebbd564b" %}
+
+package:
+  name: r-{{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: http://R-Forge.R-project.org/src/contrib/{{ name|lower }}_0.0-8.tar.gz
+
+build:
+  number: 1
+  rpaths:
+    - lib/R/lib/
+    - lib/
+  arch: linux-64
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - liblapack
+    - lapack
+    - openblas
+  host:
+    - r-base
+    - r-vegan
+    - liblapack
+    - lapack
+    - openblas
+  run:
+    - r-base
+    - liblapack
+    - lapack
+    - openblas
+
+  test:
+    commands:
+      - $R -e "library(''{{ name }}'')"
+
+  about:
+    home: Stephane Dray <stephane.dray@univ-lyon1.fr>
+    license: GPL 3
+    summary: Forward Selection with permutation (Canoco p.46)
