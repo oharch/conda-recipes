@@ -1,0 +1,44 @@
+{% set version = "0.99.4" %}
+{% set name = "CoDaSeq" %}
+
+package:
+  name: r-{{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/ggloor/{{ name }}
+
+build:
+  number: 1
+  rpaths:
+    - lib/R/lib/
+    - lib/
+  arch: linux-64
+
+requirements:
+  host:
+    - r-base
+    - bioconductor-aldex2
+    - r-scatterplot3d
+    - r-compositions
+    - r-zcompositions
+    - r-igraph
+    - r-car
+  run:
+    - r-base
+    - bioconductor-aldex2
+    - r-scatterplot3d
+    - r-compositions
+    - r-zcompositions
+    - r-igraph
+    - r-car
+
+  test:
+    commands:
+      - $R -e "library(''{{ name }}'')"
+
+  about:
+    home: Greg Gloor <ggloor@uwo.ca>
+    license: MIT
+    author: Greg Gloor, Andrew Fernandes, Jean Macklaim, Wallace Chan
+    summary: A set of common functions for the analysis of high throughput sequencing count data.
