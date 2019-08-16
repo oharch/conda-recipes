@@ -1,0 +1,44 @@
+{% set name = "traitar" %}
+{% set version = '1.1.1' %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/hzi-bifo/traitar/releases/download/1.1.1/traitar-1.1.1.tar.gz
+
+build:
+  number: 0
+  preserve_egg_dir: True
+
+requirements:
+  host:
+    - python 2.7
+    - setuptools
+
+  run:
+    - python 2.7
+    - setuptools
+    - numpy
+    - scipy
+    - matplotlib
+    - pandas
+    - prodigal
+    - hmmer
+    - parallel
+
+  test:
+    commands:
+      - traitar  -h
+
+about:
+  home: https://github.com/hzi-bifo/traitar
+  license: GNU General Public License v3 (GPLv3)
+  license_family: GPL3
+  summary: 'From genomes to phenotypes: Traitar, the microbial trait analyzer'
+
+extra:
+  identifiers:
+    - biotools:traitar
+    - doi:http://dx.doi.org/10.1128/mSystems.00101-16
