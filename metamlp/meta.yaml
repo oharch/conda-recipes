@@ -1,0 +1,22 @@
+{% set version = '0.1.0' %}
+
+package:
+  name: metamlp
+  version: {{ version }}
+
+source:
+  git_url: https://bitbucket.org/gaarangoa/metamlp.git
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
+
+about:
+  home: https://bitbucket.org/gaarangoa/metamlp
+  license: MIT
+  summary: MetaMLP is a fast approach to annotate metagenomic datasets against a protein reference database.
