@@ -1,0 +1,67 @@
+{% set name = "antiSMASH" %}
+{% set version = "5.0.0dev" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+build:
+  number: 0
+  noarch: python
+
+source:
+  git_url: https://github.com/antismash/antismash
+  patches:
+    - smiles.patch  # [osx]
+
+requirements:
+  host:
+    - python >=3.5
+    - pip
+  run:
+    - python >=3.5
+    - bcbio-gff
+    - biopython >=1.71
+    - blast
+    - diamond
+    - fasttree
+    - glimmer
+    - glimmerhmm
+    - helperlibs
+    - hmmer
+    - hmmer2
+    - jinja2
+    - openjdk
+    - matplotlib
+    - muscle
+    - numpy
+    - prodigal
+    - pyscss
+    - pysvg-py3
+    - scipy
+    - scikit-learn >=0.19.0
+
+test:
+  commands:
+    - antismash --help
+    - download-antismash-databases --help
+  requires:
+    - coverage
+    - minimock
+    - pylint ==1.8.4
+    - pytest >=3.4.0, <5
+
+about:
+  home: http://antismash.secondarymetabolites.org/
+  license: AGPL-3.0
+  license_family: AGPL
+  license_file: LICENSE.txt
+  summary: "antiSMASH allows the rapid genome-wide identification, annotation and analysis of secondary metabolite biosynthesis gene clusters."
+
+extra:
+  identifiers:
+    - biotools:antismash
+  skip-lints:
+    - should_not_be_noarch_source
+  copy_test_source_files: true
+  final: true
